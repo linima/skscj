@@ -86,10 +86,8 @@ var processor = {
             $zhizhaoBtn = $sex.find('.btn-zhizhao'),
             $method = $sex.children('.method'),
             $reject = $sex.children('.reject'),
-            $bgvideoarea = $sex.children('.bgvideo'),
-            $videoarea = $sex.children('.videoarea'),
-            $bgvideo = $sex.find('.bg-video'),
-            $btnvideo = $sex.find('.btn-video'),
+            $videoarea = $sex.children('.video'),
+            $videoplay = $videoarea.children('.videoplay'),
             $dazhao = $sex.find('.btn-dazhao'),
             sex = '';
 
@@ -97,24 +95,24 @@ var processor = {
             sex = $(this).data('target');
             var bgvideo = $(this).data('bgvideo');
             var bgposter = $(this).data('poster');
-            $bgvideo[0].src = 'media/'+bgvideo;
-            $bgvideo[0].poster = 'img/'+bgposter;
-            // $bgvideo[0].load();
-            $bgvideo[0].play();
             $home.removeClass('active');
-            $sex.addClass(sex);
-            $sex.addClass('active').children('.page:lt(2)').addClass('active');
+            $sex.addClass(sex +' active').children('.page:lt(2)').addClass('active');
+
+            $videoarea.show();
+            $videoplay[0].src = 'media/'+bgvideo;
+            $videoplay[0].poster = 'img/'+bgposter;
+            $videoplay[0].play();
 
             var timer = setInterval(function(){
-                var currentTime = $bgvideo[0].currentTime;
+                var currentTime = $videoplay[0].currentTime;
                 if(currentTime > 0){
-                    $bgvideo.next('.loadicon').hide();
+                    $videoplay.nextAll('.loadicon').hide();
                     clearInterval(timer);
                 }
             }, 100);
 
             //背景视频循环播放
-            $bgvideo.on('ended', function(){
+            $videoplay.on('ended', function(){
                 this.currentTime = 0;
                 this.play();
             })
@@ -140,17 +138,15 @@ var processor = {
             var $this = $(this);
             var src = $this.data('video');
             var poster = $this.data('poster');
-            $videoarea.addClass('active').siblings('.page').removeClass('active');
-            $btnvideo[0].src = 'media/' +src;
-            $btnvideo[0].poster = 'img/' +poster;
-
-            $bgvideo[0].pause();
-            $btnvideo[0].play();
+            $method.removeClass('active');
+            $videoplay[0].src = 'media/' +src;
+            $videoplay[0].poster = 'img/' +poster;
+            $videoplay[0].play();
 
             var timer = setInterval(function(){
-                var currentTime = $btnvideo[0].currentTime;
+                var currentTime = $videoplay[0].currentTime;
                 if(currentTime > 0){
-                    $btnvideo.next('.loadicon').hide();
+                    $videoplay.nextAll('.loadicon').hide();
                     clearInterval(timer);
                 }
             }, 100);
@@ -164,9 +160,9 @@ var processor = {
                 }
             })
 
-            $btnvideo.on('ended', function(){
+            $videoplay.on('ended', function(){
                 $reject.addClass('active').siblings('.pages').removeClass('active');
-                $videoarea.removeClass('active');
+                $videoarea.removeClass('active').hide();
             })
         });
 
@@ -181,6 +177,11 @@ var processor = {
             $sex.removeClass('active');
             $home.addClass('active');
         });
+
+        $('#dazhao .btn-jixu').on('animationend', function(){
+            console.log('Btn jixu end');
+            $sex.remove();
+        })
     },
     initMusic: function(url){
         var $audio = $('#audio');
