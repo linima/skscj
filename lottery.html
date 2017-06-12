@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>回家是道送分题！</title>
+    <link rel="stylesheet" href="css/lottery.css">
+</head>
+<body>
+	<div class="page draw active" id="draw">
+		<div class="title"></div>
+		<div class="rotate">
+			<button class="rotate-start" id="lotteryStart"></button>
+		</div>
+	</div>
+	<div class="page score" id="score">
+		<div class="title"></div>
+		<div class="caption">恭喜您获得<b>运动手环！</b>动起来，多回家看看！</div>
+		<div class="prize"><img src="img/prize1.png"></div>
+		<div class="form">
+			<input class="tel" type="tel" placeholder="请输入您的手机号" maxlength="11">
+			<textarea class="address" placeholder="请填写您的邮寄地址，方便我们给您寄送礼品。"></textarea>
+		</div>
+		<div class="tips">七个工作日内，会有三棵树工作人员与您联系，<br>沟通具体获奖事宜及后续操作，请留意您的电话。</div>
+		<div class="btns">
+			<button class="submit">提交</button>
+			<button class="share">给好友送分</button>
+		</div>
+	</div>
+	<div class="page success" id="success">
+		<div class="title"></div>
+		<p>七个工作日内，会有三棵树工作人员与您联系，<br>沟通具体获奖事宜及后续操作，请留意您的电话。</p>
+		<button class="share">给好友送分</button>
+	</div>
+	<div class="page popshare" id="popshare"></div>
+	<div class="msgtip" id="msgtip">
+		<div class="dialog">
+			<p>就差一点<br>再试试运气吧！</p>
+			<div class="ok"></div>
+		</div>
+	</div>
+
+    <script src="js/jquery.min.js"></script>
+	<script src="js/lottery.js"></script>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?a9693e817d6246e0c643f897a948ca77";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</body>
+</html>

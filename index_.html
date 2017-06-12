@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三棵树</title>
+    <style>
+        .turntable {
+            transform: rotate(0deg);
+            transition: all 2s;
+        }
+
+        .turntable img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .button {
+            background: #fff;
+            border: 1px solid #eee;
+        }
+    </style>
+
+</head>
+<body>
+<div style="width: 300px;height: 200px;border-right: 2px solid #f00;"></div>
+<div class="turntable-draw-wrap">
+    <div class="turntable" style="width: 600px;height: 600px;">
+        <img src="img/center.jpg" id="rotate">
+    </div>
+</div>
+
+<div style="padding-top: 200px;" id="msg">
+
+</div>
+<script src="js/zepto.min.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'admin/index.php?c=luckdraw&m=init',
+            data: {random: Math.random()},
+            dataType: 'json',
+            timeout: 3000,
+            success: function (ret) {
+                if (ret.code == 0) {
+                } else if (ret.code == 1) {
+                    location.href = ret.locatioin;
+                    return false;
+                } else if (ret.code == 4) {
+                    alert('已经中过大奖了, level:' + ret.o_level);
+                    return false;
+                } else if (ret.code == 5) {
+                    alert(' 您今天的抽奖次数已用完，明天再来吧');
+                    return false;
+                } else {
+                    alert(ret.msg);
+                }
+            },
+            error: function (xhr, type) {
+                alert('Ajax error!')
+            }
+        });
+        $("#rotate").click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'admin/index.php?c=luckdraw',
+                // data to be added to query string:
+                data: {random: Math.random()},
+                // type of data we are expecting in return:
+                dataType: 'json',
+                timeout: 3000,
+                success: function (ret) {
+                    if (ret.code == 0) {
+                        $("#msg").html("抽中:" + ret.title + "  转角:" + ret.angles + " 度, 停留在第:" + ret.level + " 格");
+                        $(".turntable").css({"transform": "rotate(0deg)", "transition": "all 0s"});
+                        setTimeout(function () {
+                            $(".turntable").css("transition", "all " + ret.p_duration + "s").css("transform", "rotate(" + ( ret.angles + 360 * ret.p_baseanimate) + "deg)");
+                        }, 100);
+                    } else {
+                        alert(ret.msg);
+                    }
+                },
+                error: function (xhr, type) {
+                    alert('Ajax error!')
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

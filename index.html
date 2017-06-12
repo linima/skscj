@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>回家是道送分题</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="loading" id="loading">
+    <div class="logo">
+        <div class="colorlogo" style="height: 0;"></div>
+    </div>
+    <div class="percent">LOADING 0%</div>
+</div>
+<div class="section home" id="home">
+    <div class="people"></div>
+    <div class="question"></div>
+    <div class="enter-btns">
+        <a class="enter" data-target="male" data-bgvideo="m-bg.mp4" data-poster="m-bg.jpg">看看他</a>
+        <a class="enter" data-target="female" data-bgvideo="f-bg.mp4" data-poster="f-bg.jpg">看看她</a>
+    </div>
+    <div class="advs">广告</div>
+</div>
+<div class="section" id="sex">
+    <div class="page bgvideo">
+        <video class="bg-video" preload="auto" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        <div class="loadicon"></div>
+    </div>
+    <div class="page flex-end">
+        <div class="question"></div>
+        <a class="btn btn-zhizhao">给TA支招</a>
+    </div>
+    <div class="page flex-end method">
+        <a class="btn" data-video="">招数内容</a>
+    </div>
+    <div class="page videoarea">
+        <video class="btn-video" webkit-playsinline="true" playsinline x5-video-player-type="h5"></video>
+        <div class="loadicon"></div>
+    </div>
+    <div class="page flex-end reject">
+        <div class="txt"></div>
+        <div class="othermethod"></div>
+        <a class="btn btn-dazhao">放大招</a>
+    </div>
+</div>
+<div class="section dazhao" id="dazhao">
+    <div class="txt"></div>
+    <a class="btn btn-songfen" href="lottery.html">点我送分</a>
+    <a class="btn btn-jixu">继续支招</a>
+</div>
+<div class="audio on">
+    <audio src="media/bgm.mp3" preload="auto" autoplay="autoplay" loop="loop" id="audio"></audio>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.imgpreloader.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a9693e817d6246e0c643f897a948ca77";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    var wxConfig = {
+        timeLineTitle: '“樊胜美”带男友回家前应该先看这！',
+        link: 'http://h5.yuncii.com/skscj/index.html',
+        img: 'http://h5.yuncii.com/skscj/img/share.jpg',
+        appMessageTitle: '“樊胜美”带男友回家前应该先看这！',
+        appMessageDesc: '点开看看，他们需要你的帮助'
+    };
+</script>
+<!-- <script src="js/wx.js"></script> -->
+<script src="js/app.js"></script>
+</body>
+</html>
