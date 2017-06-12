@@ -100,7 +100,6 @@ var processor = {
             $bgvideo[0].src = 'media/'+bgvideo;
             $bgvideo[0].poster = 'img/'+bgposter;
             // $bgvideo[0].load();
-            $bgvideo.css('display', 'block');
             $bgvideo[0].play();
             $home.removeClass('active');
             $sex.addClass(sex);
@@ -145,8 +144,6 @@ var processor = {
             $btnvideo[0].src = 'media/' +src;
             $btnvideo[0].poster = 'img/' +poster;
 
-            $bgvideo.css('display', 'none');
-            $btnvideo.css('display', 'block');
             $bgvideo[0].pause();
             $btnvideo[0].play();
 
@@ -170,7 +167,6 @@ var processor = {
             $btnvideo.on('ended', function(){
                 $reject.addClass('active').siblings('.pages').removeClass('active');
                 $videoarea.removeClass('active');
-                $btnvideo.css('display', 'none');
             })
         });
 
@@ -178,7 +174,6 @@ var processor = {
         $dazhao.on('click', function(){
             $('#dazhao').addClass('active');
             $reject.removeClass('active');
-            $btnvideo.css('display', 'none');
         });
         //重新支招
         $('#dazhao .btn-jixu').on('click', function(){
