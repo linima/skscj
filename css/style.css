@@ -181,8 +181,8 @@ img{
 }
 .bgvideo,
 .videoarea{
-    align-items: flex-end;
-    -webkit-align-items: flex-end;
+    /*align-items: flex-end;
+    -webkit-align-items: flex-end;*/
     background-color: #000;
     background-size: cover;
     background-position: center;
@@ -209,6 +209,8 @@ img{
     z-index: 2;
     left: 0;
     bottom: 0;
+    right: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     object-fit: fill;
